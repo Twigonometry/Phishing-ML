@@ -27,7 +27,9 @@ Don't do what I did and make ANOTHER commit removing the file. Simply run the fo
 
 ```
 $ git rm --cached .\kaggle-datasets\The-Enron-Email-Dataset\emails.csv
-$ 
+$ git commit --amend --allow-empty -C HEAD
 ```
+
+(you must use `--allow-empty` if adding the dataset was the only change in the commit, but can omit the flag otherwise)
 
 You will have to manually download, unzip, and place the Enron dataset in its corresponding folder (`kaggle-datasets/The-Enron-Email-Dataset`)
