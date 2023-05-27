@@ -3,17 +3,21 @@ Experimental repository on phishing datasets for dissertation
 
 ## Datasets
 
+The following three datasets are included within the repository:
+
 Email-Spam-Dataset: https://www.kaggle.com/datasets/nitishabharathi/email-spam-dataset
 - License: https://creativecommons.org/publicdomain/zero/1.0/
 
 Phishing-Dataset-for-Machine-Learning: https://www.kaggle.com/datasets/shashwatwork/phishing-dataset-for-machine-learning
 - License: https://creativecommons.org/licenses/by/4.0/
 
-The-Enron-Email-Dataset: https://www.kaggle.com/datasets/wcukierski/enron-email-dataset (must be manually placed in folder, see below)
-- License: copyright original author
-
 Web-page-Phishing-Detection-Dataset: https://www.kaggle.com/datasets/shashwatwork/web-page-phishing-detection-dataset
 - License: https://creativecommons.org/licenses/by/4.0/
+
+The Enron dataset **must be manually downloaded** from the link below - extract emails.csv to the folder `kaggle-datasets/The-Enron-Email-Dataset`
+
+The-Enron-Email-Dataset: https://www.kaggle.com/datasets/wcukierski/enron-email-dataset
+- License: copyright original author
 
 ### ML Initiation Rites
 
