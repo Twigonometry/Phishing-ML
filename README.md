@@ -1,6 +1,36 @@
 # Phishing-ML
 Experimental repository on phishing datasets for dissertation
 
+# Installation
+
+Requires python 3. Run:
+
+```
+python -m pip install -r .\requirements.txt
+```
+
+If this is your first time using nltk, you may need to uncomment some of these statements and run the cell:
+
+```
+#download wordnet for lemmatization
+#uncomment appropriate line if you get error: "Resource wordnet not found.", "Resource punkt not found.", etc...
+
+# nltk.download('wordnet')
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('averaged_perceptron_tagger')
+```
+
+these download the various resources used by NLTK in preprocessing.
+
+The same goes for uncommenting this line
+
+```
+# ! python -m spacy download en_core_web_sm
+```
+
+when setting up spacy.
+
 ## Datasets
 
 The following three datasets are included within the repository:
