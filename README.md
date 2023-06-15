@@ -33,6 +33,8 @@ when setting up spacy.
 
 ## Datasets
 
+### Phishing Emails
+
 The following three datasets are included within the repository:
 
 Email-Spam-Dataset: https://www.kaggle.com/datasets/nitishabharathi/email-spam-dataset
@@ -48,6 +50,12 @@ The Enron dataset **must be manually downloaded** from the link below - extract 
 
 The-Enron-Email-Dataset: https://www.kaggle.com/datasets/wcukierski/enron-email-dataset
 - License: copyright original author
+
+### Sentiment Analysis Training
+
+We use the classic movie reviews dataset to train our Naive Bayes classifier, and apply this model to the emails. We can then see if there's a cross-correlation with positive sentiment words and spam words, etc, or if sentiment can be used at all to reliably predict spam/ham (i.e. by classifying all emails as positive or negative, and seeing which percentage of each class are spam and ham).
+
+https://www.kaggle.com/competitions/sentiment-analysis-on-movie-reviews/data
 
 ### ML Initiation Rites
 
