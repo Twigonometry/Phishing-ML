@@ -57,6 +57,16 @@ We use the classic movie reviews dataset to train our Naive Bayes classifier, an
 
 https://www.kaggle.com/competitions/sentiment-analysis-on-movie-reviews/data
 
+### phishingcorpus
+
+**IMPORTANT**: this file is not included in the git repository as it is quarantined by windows on download, it's available in my [fork](https://github.com/Twigonometry/MachineLearningPhishing) in case the original goes down. If you do grab the file on a Windows machine, you can add an exemption to Defender. Or you can download the file on a Linux VM. Once downloaded, put it into the `phishingcorpus-dataset` folder.
+
+The "phishingcorpus" dataset from Fette et. al's paper 'Learning to Detect Phishing Emails' has been reproduced here:
+
+https://github.com/diegoocampoh/MachineLearningPhishing/blob/master/code/resources/emails-phishing.mbox
+
+It's quite old, so the sophistication of phishing has undoubtedly advanced since then, but it's a start.
+
 ### ML Initiation Rites
 
 I made the mistake of committing the Enron dataset (`9ea07372587224b6481794bdd8287470038e2a83`) which is above Github's file limit. If you're faced with this lovely message
