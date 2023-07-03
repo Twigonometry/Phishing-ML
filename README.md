@@ -31,6 +31,24 @@ The same goes for uncommenting this line
 
 when setting up spacy.
 
+If you receive this error when installing spacy packages:
+
+```bash
+$ python3 -m spacy download en_core_web_sm
+
+...
+
+TypeError: __init__() got an unexpected keyword argument 'no_args_is_help'
+```
+
+Run this:
+
+```bash
+$ pip3 install click --upgrade
+```
+
+You can now re-run the install command (either in command line or via notebook)
+
 ## Datasets
 
 ### Phishing Emails
