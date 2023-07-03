@@ -1,4 +1,4 @@
-**IMPORTANT**: this file is not included in the git repository as it is quarantined by windows on download, it's available in my [fork](https://github.com/Twigonometry/MachineLearningPhishing) in case the original goes down. If you do grab the file on a Windows machine, you can add an exemption to Defender. Or you can download the file and put it into the 
+**IMPORTANT**: this file is not included in the git repository as it is quarantined by windows on download, it's available in my [fork](https://github.com/Twigonometry/MachineLearningPhishing) in case the original goes down. If you do grab the file on a Windows machine, you can add an exemption to Defender. Or you can download the file on an Ubuntu machine
 
 The "phishingcorpus" dataset from Fette et. al's paper 'Learning to Detect Phishing Emails' has been reproduced [here](https://github.com/diegoocampoh/MachineLearningPhishing/blob/master/code/resources/emails-phishing.mbox)
 
