@@ -5,13 +5,26 @@ Experimental repository on phishing datasets for dissertation
 
 Requires python 3. Run:
 
-```
+```cmd
 python -m pip install -r .\requirements.txt
+```
+
+or on unix
+
+```bash
+$ python3 -m pip install -r ./requirements.txt
+```
+
+You may first have to install pip on a fresh system:
+
+```bash
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+$ python3 get-pip.py
 ```
 
 If this is your first time using nltk, you may need to uncomment some of these statements and run the cell:
 
-```
+```python
 #download wordnet for lemmatization
 #uncomment appropriate line if you get error: "Resource wordnet not found.", "Resource punkt not found.", etc...
 
@@ -25,7 +38,7 @@ these download the various resources used by NLTK in preprocessing.
 
 The same goes for uncommenting this line
 
-```
+```python
 # ! python -m spacy download en_core_web_sm
 ```
 
@@ -79,6 +92,13 @@ https://www.kaggle.com/competitions/sentiment-analysis-on-movie-reviews/data
 
 **IMPORTANT**: this file is not included in the git repository as it is quarantined by windows on download, it's available in my [fork](https://github.com/Twigonometry/MachineLearningPhishing) in case the original goes down. If you do grab the file on a Windows machine, you can add an exemption to Defender. Or you can download the file on a Linux VM. Once downloaded, put it into the `phishingcorpus-dataset` folder.
 
+To download on Ubuntu:
+
+```bash
+$ cd phishingcorpus-dataset
+$ wget https://github.com/Twigonometry/MachineLearningPhishing/tree/master/code/resources/emails-phishing.mbox
+```
+
 The "phishingcorpus" dataset from Fette et. al's paper 'Learning to Detect Phishing Emails' has been reproduced here:
 
 https://github.com/diegoocampoh/MachineLearningPhishing/blob/master/code/resources/emails-phishing.mbox
@@ -89,13 +109,13 @@ It's quite old, so the sophistication of phishing has undoubtedly advanced since
 
 I made the mistake of committing the Enron dataset (`9ea07372587224b6481794bdd8287470038e2a83`) which is above Github's file limit. If you're faced with this lovely message
 
-```
+```bash
 remote: error: GH001: Large files detected. You may want to try Git Large File Storage
 ```
 
 Don't do what I did and make ANOTHER commit removing the file. Simply run the following:
 
-```
+```bash
 $ git rm --cached .\kaggle-datasets\The-Enron-Email-Dataset\emails.csv
 $ git commit --amend --allow-empty -C HEAD
 ```
