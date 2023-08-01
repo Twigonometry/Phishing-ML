@@ -77,7 +77,9 @@ Phishing-Dataset-for-Machine-Learning: https://www.kaggle.com/datasets/shashwatw
 Web-page-Phishing-Detection-Dataset: https://www.kaggle.com/datasets/shashwatwork/web-page-phishing-detection-dataset
 - License: https://creativecommons.org/licenses/by/4.0/
 
-The Enron dataset **must be manually downloaded** from the link below - extract emails.csv to the folder `kaggle-datasets/The-Enron-Email-Dataset`
+### Enron
+
+The full Enron dataset **must be manually downloaded** from the link below - extract emails.csv to the folder `kaggle-datasets/The-Enron-Email-Dataset`
 
 The-Enron-Email-Dataset: https://www.kaggle.com/datasets/wcukierski/enron-email-dataset
 - License: copyright original author
@@ -89,6 +91,12 @@ Archive:  archive.zip
 $ mkdir ~/Documents/Phishing-ML/kaggle-datasets/The-Enron-Email-Dataset
 $ mv emails.csv ~/Documents/Phishing-ML/kaggle-datasets/The-Enron-Email-Dataset/emails.csv
 ```
+
+#### Processing of Enron
+
+Considerable effort went into combining the full Enron dataset with the elements from Email-Spam-Dataset that are labelled as spam. Unfortunately, due to the size of the dataset, this cannot be uploaded to GitHub. The method `mergeEnron()` can be called, after which the fully labelled Enron dataset can be loaded from the CSV.
+
+This process is needed as all Enron emails need a label, but we cannot assume they are all non-spam. In fact, some have been labelled as spam; the goal is to consolidate the two datasets and transfer across the labels from Email-Spam-Dataset, but unfortunately the data formats are different so some processing had to be done to identify which emails are the same.
 
 ### Sentiment Analysis Training
 
