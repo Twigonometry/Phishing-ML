@@ -92,6 +92,10 @@ $ mkdir ~/Documents/Phishing-ML/kaggle-datasets/The-Enron-Email-Dataset
 $ mv emails.csv ~/Documents/Phishing-ML/kaggle-datasets/The-Enron-Email-Dataset/emails.csv
 ```
 
+### Educational Institute Data
+
+This is data from an unnamed Educational Institute, accessed from https://github.com/TanusreeSharma/phishingdata-Analysis.
+
 #### Processing of Enron
 
 Considerable effort went into combining the full Enron dataset with the elements from Email-Spam-Dataset that are labelled as spam. Unfortunately, due to the size of the dataset, this cannot be uploaded to GitHub. The method `mergeEnron()` can be called, after which the fully labelled Enron dataset can be loaded from the CSV.
