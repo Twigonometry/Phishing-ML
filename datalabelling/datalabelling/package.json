@@ -1,6 +1,7 @@
 {
   "name": "datalabelling",
   "version": "0.0.0",
+  "description": "Portal for labelling data for semantic analysis",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -12,5 +13,6 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11"
-  }
+  },
+  "author": "Twigonometry"
 }
