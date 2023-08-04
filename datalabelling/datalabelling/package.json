@@ -4,15 +4,21 @@
   "description": "Portal for labelling data for semantic analysis",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=datalabelling:* npm run devstart"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.18.2",
     "http-errors": "~1.6.3",
+    "mongoose": "^7.4.2",
     "morgan": "~1.9.1",
     "pug": "^2.0.4"
   },
-  "author": "Twigonometry"
+  "author": "Twigonometry",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
