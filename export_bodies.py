@@ -12,7 +12,7 @@ dfEdu['Body'] = dfEdu[dfEdu.columns[1:]].apply(
     axis=1
 )
 
-dfEdu.drop(columns=['Email_Subject', 'Email_Content', 'Closing_Remarks'])
+dfEdu = dfEdu.drop(columns=['Email_Subject', 'Email_Content', 'Closing_Remarks'])
 
 # Email Spam Dataset
 
@@ -24,10 +24,14 @@ dfLing = pd.read_csv('./kaggle-datasets/Email-Spam-Dataset/lingSpam.csv', usecol
 # Reading from this file requires having run process_enron() in classif.ipynb
 # We also do not remove duplicates in this file
 
-dfEnronFull = pd.read_csv('./Processed-Datasets/Enron-Bodies/emails.csv', usecols=['message']).rename({"message":"Body"})
+dfEnronFull = pd.read_csv('./Processed-Datasets/Enron-Bodies/emails.csv', usecols=['message']).rename(columns={"message":"Body"})
 
 # Merge all
 
 frames = [dfEdu, dfSA, dfEnron, dfLing, dfEnronFull]
 
-pd.concat(frames).to_csv("./Processed-Datasets/all-bodies.csv")
+dfAll = pd.concat(frames).dropna()
+print(dfAll.head())
+input("Correct? any key to continue")
+
+dfAll.to_csv("./Processed-Datasets/all-bodies.csv", index=False)
