@@ -53,17 +53,19 @@ dfAll = dfAll.replace(to_replace=email_pat, value='<EMAIL>', regex=True)
 
 tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
 
-def tokenize_function(examples):
-    return tokenizer(examples["Body"], padding="max_length", truncation=True)
+def tokenize_function(text):
+    return tokenizer(text, padding="max_length", truncation=True)
 
-tokenized_dataset = dfAll.map(tokenize_function, batched=True)
+dfAll['Body'] = dfAll['Body'].map(tokenize_function)
+
+print("Tokenised")
 
 # == Train/Test Split
 
-X = tokenized_dataset.iloc[:, 1]
+X = dfAll.iloc[:, 1]
 # print(X.head())
 
-y = tokenized_dataset.iloc[:, -1]
+y = dfAll.iloc[:, -1]
 # print(y.head())
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
