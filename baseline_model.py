@@ -33,7 +33,7 @@ dfEnronFull.rename(columns={"message":"Body"})
 
 # Combine Datasets
 
-dfAll = pd.concat([dfSA, dfEnron, dfLing, dfEnronFull]).tail(-1).drop(columns=['message'])
+dfAll = pd.concat([dfSA, dfEnron, dfLing, dfEnronFull]).tail(-1).drop(columns=['message']).dropna()
 
 # == Define Regexes ==
 
@@ -49,16 +49,14 @@ dfAll = dfAll.replace(to_replace=url_pat, value='<URL>', regex=True)
 
 dfAll = dfAll.replace(to_replace=email_pat, value='<EMAIL>', regex=True)
 
-# == BERT Tokenizer ==
+print(dfAll)
+# print(type(dfAll['Body']))
 
-tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
+# == Scikit Tokenizer
 
-def tokenize_function(text):
-    return tokenizer(text, padding="max_length", truncation=True)
+vectorizer = TfidfVectorizer()
 
-dfAll['Body'] = dfAll['Body'].map(tokenize_function)
-
-print("Tokenised")
+dfAll['Body'] = vectorizer.fit_transform(dfAll['Body'].values)
 
 # == Train/Test Split
 
