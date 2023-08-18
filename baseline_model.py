@@ -1,10 +1,15 @@
 # Imports
 import pandas as pd
+import numpy as np
 
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification
+from transformers import TrainingArguments, Trainer
+
+import evaluate
 
 # == Utility Functions ==
 
@@ -44,16 +49,53 @@ dfAll = dfAll.replace(to_replace=url_pat, value='<URL>', regex=True)
 
 dfAll = dfAll.replace(to_replace=email_pat, value='<EMAIL>', regex=True)
 
+# == BERT Tokenizer ==
+
+tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
+
+def tokenize_function(examples):
+    return tokenizer(examples["Body"], padding="max_length", truncation=True)
+
+tokenized_dataset = dfAll.map(tokenize_function, batched=True)
+
 # == Train/Test Split
 
-X = dfAll.iloc[:, 1]
+X = tokenized_dataset.iloc[:, 1]
 # print(X.head())
 
-y = dfAll.iloc[:, -1]
+y = tokenized_dataset.iloc[:, -1]
 # print(y.head())
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# == Scikit Vectorizer ==
+train = pd.concat(X_train, y_train)
+test = pd.concat(X_test, y_test)
 
-# vectorizer = TfidfVectorizer()
+small_eval = test.shuffle(seed=42).select(range(1000))
+
+# Train BERT Classifier
+
+#Define Model
+model = AutoModelForSequenceClassification.from_pretrained("bert-base-cased", num_labels=2)
+
+#Hyperparameters
+training_args = TrainingArguments(output_dir="train_checkpoints", evaluation_strategy="epoch")
+
+#Accuracy Metrics
+metric = evaluate.load("accuracy")
+
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    predictions = np.argmax(logits, axis=-1)
+    return metric.compute(predictions=predictions, references=labels)
+
+#Create Trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=train,
+    eval_dataset=small_eval,
+    compute_metrics=compute_metrics,
+)
+
+trainer.train()

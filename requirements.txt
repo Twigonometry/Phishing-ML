@@ -7,3 +7,5 @@ matplotlib
 scikit-learn
 gensim
 transformers
+evaluate
+torch
