@@ -1,6 +1,10 @@
 # Imports
 import pandas as pd
-import re
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+from transformers import AutoTokenizer
 
 # == Utility Functions ==
 
@@ -24,7 +28,7 @@ dfEnronFull.rename(columns={"message":"Body"})
 
 # Combine Datasets
 
-dfAll = pd.concat([dfSA, dfEnron, dfLing, dfEnronFull])
+dfAll = pd.concat([dfSA, dfEnron, dfLing, dfEnronFull]).tail(-1).drop(columns=['message'])
 
 # == Define Regexes ==
 
@@ -40,6 +44,16 @@ dfAll = dfAll.replace(to_replace=url_pat, value='<URL>', regex=True)
 
 dfAll = dfAll.replace(to_replace=email_pat, value='<EMAIL>', regex=True)
 
-# Print Head
+# == Train/Test Split
 
-print(dfAll.head())
+X = dfAll.iloc[:, 1]
+# print(X.head())
+
+y = dfAll.iloc[:, -1]
+# print(y.head())
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# == Scikit Vectorizer ==
+
+# vectorizer = TfidfVectorizer()
