@@ -56,24 +56,29 @@ print(dfAll)
 
 vectorizer = TfidfVectorizer()
 
-dfAll['Body'] = vectorizer.fit_transform(dfAll['Body'].values)
+X = vectorizer.fit_transform(list(dfAll['Body'].values))
+
+#convert from sparse matrix
+X = pd.DataFrame.sparse.from_spmatrix(X)
+
+print("Transformed")
+
+y = dfAll.iloc[:, -1]
 
 # == Train/Test Split
 
-X = dfAll.iloc[:, 1]
-# print(X.head())
-
-y = dfAll.iloc[:, -1]
-# print(y.head())
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-train = pd.concat(X_train, y_train)
-test = pd.concat(X_test, y_test)
+print("Split")
+
+train = pd.concat([X_train, y_train])
+test = pd.concat([X_test, y_test])
 
 small_eval = test.shuffle(seed=42).select(range(1000))
 
 # Train BERT Classifier
+
+print("Training")
 
 #Define Model
 model = AutoModelForSequenceClassification.from_pretrained("bert-base-cased", num_labels=2)
