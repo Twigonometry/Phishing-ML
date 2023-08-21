@@ -24,23 +24,6 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-// Define a schema
-const Schema = mongoose.Schema;
-
-const EmailSchema = new Schema({
-  body: String,
-  ratings: {
-    authoritative: Number,
-    threatening: Number,
-    rewarding: Number,
-    unnatural: Number,
-    emotional: Number,
-    provoking: Number,
-    timesensitive: Number,
-    imperative: Number
-  }
-});
-
 var app = express();
 
 // view engine setup
