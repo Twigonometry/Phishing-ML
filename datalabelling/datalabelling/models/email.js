@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const EmailSchema = new Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   body: String,
   ratings: {
     authoritative: Number,
