@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const EmailSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   body: String,
-  ratings: {
+  rating: {
     authoritative: Number,
     threatening: Number,
     rewarding: Number,

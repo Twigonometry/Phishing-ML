@@ -18,24 +18,26 @@ router.post('/rate', async function(req, res, next) {
   try {
     const params = req.body;
     const id = new mongoose.Types.ObjectId(params.id);
+    console.log(id);
 
-    const rating = {
-      authoritative: params.authoritative,
-      threatening: params.threatening,
-      rewarding: params.rewarding,
-      unnatural: params.unnatural,
-      emotional: params.emotional,
-      provoking: params.provoking,
-      timesensitive: params.timesensitive,
-      imperative: params.imperative
-    }
+    const tmp_rating = {
+      authoritative: (params.authoritative == "on" ? 1 : 0),
+      threatening: (params.threatening == "on" ? 1 : 0),
+      rewarding: (params.rewarding == "on" ? 1 : 0),
+      unnatural: (params.unnatural == "on" ? 1 : 0),
+      emotional: (params.emotional == "on" ? 1 : 0),
+      provoking: (params.provoking == "on" ? 1 : 0),
+      timesensitive: (params.timesensitive == "on" ? 1 : 0),
+      imperative: (params.imperative == "on" ? 1 : 0)
+    };
 
-    console.log(rating);
+    console.log(tmp_rating);
 
-    await EmailsModel.findByIdAndUpdate(id, {rating: rating});
+    await EmailsModel.findByIdAndUpdate(id, {rating: tmp_rating});
 
     res.redirect('/')
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 })
