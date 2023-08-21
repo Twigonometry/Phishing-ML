@@ -33,9 +33,7 @@ dfEnronFull = dfEnronFull.rename(columns={"message":"Body"}).sample(400)
 
 dfAll = pd.concat([dfSA, dfEnron, dfLing, dfEnronFull])
 print(dfAll.head())
-print(dfAll.size)
 dfAll.dropna()
-print(dfAll.size)
 
 # Load all items into DB
 

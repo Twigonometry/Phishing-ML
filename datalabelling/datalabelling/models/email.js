@@ -17,3 +17,5 @@ const EmailSchema = new Schema({
 });
 
 const EmailModel = mongoose.model("EmailModel", EmailSchema);
+
+module.exports = mongoose.model("Email", EmailSchema)
