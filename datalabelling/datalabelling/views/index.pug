@@ -6,4 +6,30 @@ block content
 
   p= email.body
 
-  form
+  form(action='/rate' method='POST')
+    input(type='hidden' name='id' value=email.id)
+    input(type='checkbox' name='authoritative')
+    label(for='authoritative')
+      p Authoritative?
+    input(type='checkbox' name='threatening')
+    label(for='threatening')
+      p Threatening?
+    input(type='checkbox' name='rewarding')
+    label(for='rewarding')
+      p Rewarding?
+    input(type='checkbox' name='unnatural')
+    label(for='unnatural')
+      p Unnatural?
+    input(type='checkbox' name='emotional')
+    label(for='emotional')
+      p Emotional?
+    input(type='checkbox' name='provoking')
+    label(for='provoking')
+      p Provoking?
+    input(type='checkbox' name='timesensitive')
+    label(for='timesensitive')
+      p Time sensitive?
+    input(type='checkbox' name='imperative')
+    label(for='imperative')
+      p Imperative?
+    input(type='submit')

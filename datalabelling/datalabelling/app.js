@@ -16,7 +16,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
-const mongoDB = "mongodb://127.0.0.1/my_database";
+const mongoDB = "mongodb://127.0.0.1:27017/mydatabase";
 
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));
@@ -32,9 +32,16 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
 
 app.use('/', indexRouter);
 // app.use('/emails', emailsRouter);

@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 router.get('/', async function(req, res, next) {
   try {
     var email = await(EmailsModel.findOne({rating: null}).exec());
+    console.log(email);
     res.render('index', { title: 'Data Labelling Portal', email: email });
   } catch (error) {
     return next(error);
@@ -15,10 +16,23 @@ router.get('/', async function(req, res, next) {
 
 router.post('/rate', async function(req, res, next) {
   try {
-    const params = req.query;
+    const params = req.body;
     const id = new mongoose.Types.ObjectId(params.id);
 
-    await EmailsModel.findByIdAndUpdate(id, {ratings: params.rating})
+    const rating = {
+      authoritative: params.authoritative,
+      threatening: params.threatening,
+      rewarding: params.rewarding,
+      unnatural: params.unnatural,
+      emotional: params.emotional,
+      provoking: params.provoking,
+      timesensitive: params.timesensitive,
+      imperative: params.imperative
+    }
+
+    console.log(rating);
+
+    await EmailsModel.findByIdAndUpdate(id, {rating: rating});
 
     res.redirect('/')
   } catch (error) {
