@@ -29,7 +29,7 @@ dfLing = pd.read_csv('./kaggle-datasets/Email-Spam-Dataset/lingSpam.csv', names=
 
 # Load and rename Enron
 dfEnronFull = load_processed_enron()
-dfEnronFull.rename(columns={"message":"Body"})
+dfEnronFull = dfEnronFull.rename(columns={"message":"Body"})
 
 # Combine Datasets
 
