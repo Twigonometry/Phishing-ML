@@ -4,7 +4,7 @@ The "phishingcorpus" dataset from Fette et. al's paper 'Learning to Detect Phish
 
 ```bash
 $ cd phishingcorpus-dataset
-$ wget https://github.com/Twigonometry/MachineLearningPhishing/tree/master/code/resources/emails-phishing.mbox
+$ wget https://github.com/Twigonometry/MachineLearningPhishing/raw/master/code/resources/emails-phishing.mbox -O emails-phishing.mbox
 ```
 
 It's quite old, so the sophistication of phishing has undoubtedly advanced since then, but it's a start.
