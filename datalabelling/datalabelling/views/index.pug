@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  p #[strong Authoritative:] Does the email convey some sense of authority? Does it claim to be from an authority e.g. a government body, public body, or senior staff member?
+  p #[strong Threatening:] Is the email putting pressure on you? Does it threaten you with a bad outcome if you don't take action?
+  p #[strong Rewarding:] Does the email offer a reward for completing an action?
+  p #[strong Unnatural:] Is the language used unnatural? Does it use broken english?
+  p #[strong Emotional:] Is the speaker in the email showing a particularly strong amount of emotion?
+  p #[strong Provoking:] Does the email convey a strong sense of emotion in you? Does it appeal to emotional reactions? These emotions could be positive or negative, as long as they are strong
+  p #[strong Time-Sensitive:] Does the email seem urgent, or give you a time-based deadline?
+  p #[strong Imperative:] Does this email encourage you to perform an action of any kind? e.g. using words like "click", "login", "act fast", etc?
+
+  p Tick any that apply and press submit!
+
+  p= email.body
+
+  form(action='/rate' method='POST')
+    input(type='hidden' name='id' value=email.id)
+    input(type='checkbox' name='authoritative')
+    label(for='authoritative')
+      p Authoritative?
+    input(type='checkbox' name='threatening')
+    label(for='threatening')
+      p Threatening?
+    input(type='checkbox' name='rewarding')
+    label(for='rewarding')
+      p Rewarding?
+    input(type='checkbox' name='unnatural')
+    label(for='unnatural')
+      p Unnatural?
+    input(type='checkbox' name='emotional')
+    label(for='emotional')
+      p Emotional?
+    input(type='checkbox' name='provoking')
+    label(for='provoking')
+      p Provoking?
+    input(type='checkbox' name='timesensitive')
+    label(for='timesensitive')
+      p Time sensitive?
+    input(type='checkbox' name='imperative')
+    label(for='imperative')
+      p Imperative?
+    input(type='submit' value='Submit')
